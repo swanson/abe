@@ -1,0 +1,2 @@
+require 'abe'
+run Abe
