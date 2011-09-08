@@ -1,9 +1,35 @@
 <html>
-  <head>
+    <head>
+        <title>Abraham Lincoln - Man, Myth, Wearer of Stovepipe Hats</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js" />  </script>
   </head>
   <body>
     <div id="content">
-      <h1>Abraham Lincoln? Isn't he the one who...</h1>
+        <h1>Abraham Lincoln? Isn't he the President who...</h1>
+        <h1 id="fact"><%= @fact %></h1>
+        <h2>No...you're thinking of <span id="pres"><%= @pres %></span>.
+            <br/><a href="#" id="newFact">Try Again?</a>
+        </h2>
     </div>
+
+  <script>
+    $(document).ready(function() {
+        var getFact = function(){  
+            $.ajax({
+                url: '/fact',
+                success: function(data){
+                    $('#fact').html(data.fact);
+                    $('#pres').html(data.pres);
+                },
+                dataType: 'json'
+            });
+        };
+
+        $('#newFact').click(function(e){
+            e.preventDefault();
+            getFact();
+        });
+    });
+  </script>
   </body>
 </html>
