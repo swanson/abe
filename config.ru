@@ -1,2 +1,2 @@
-require 'abe'
-run Abe
+require './abe'
+run Abe.new
