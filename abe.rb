@@ -4,6 +4,7 @@ require 'json'
 require 'mongo'
 
 class Abe < Sinatra::Base
+  set :root, Abe.root
 
   configure do
     uri_string = uri_string = ENV['MONGOHQ_URL'] || ENV['MONGOHQ_ABE']
